@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Geolocation Demo</title>
+  </head>
+  <body>
+    <h2>Vị trí hiện tại của bạn:</h2>
+    <button onclick="layvitri()">Lấy vị trí</button>
+    <p id="output"></p>
+
+    <script>
+      function layvitri() {
+        if (navigator.geolocation) {
+          navigator.geolocation.watchPosition(hienvitri, loi, {
+            timeout: 5000,
+          });
+        } else {
+          document.getElementById("output").innerHTML =
+            "Trình duyệt không hỗ trợ Geolocation.";
+        }
+      }
+
+      function hienvitri(position) {
+        document.getElementById("output").innerHTML =
+          "Kinh độ: " +
+          position.coords.longitude +
+          "<br>Vĩ độ: " +
+          position.coords.latitude;
+      }
+
+      function loi(error) {
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            alert("Bạn đã từ chối cho phép truy cập vị trí.");
+            break;
+          case error.POSITION_UNAVAILABLE:
+            alert("Không thể lấy vị trí hiện tại.");
+            break;
+          case error.TIMEOUT:
+            alert("Quá thời gian chờ.");
+            break;
+        }
+      }
+    </script>
+  </body>
+</html>
