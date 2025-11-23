@@ -2,11 +2,14 @@
 <html>
   <head>
     <title>Geolocation Demo</title>
+    <link rel="stylesheet" href="geolocation.css" />
   </head>
   <body>
-    <h2>Vị trí hiện tại của bạn:</h2>
-    <button onclick="layvitri()">Lấy vị trí</button>
-    <p id="output"></p>
+    <div>
+      <h2>Vị trí hiện tại của bạn</h2>
+      <button onclick="layvitri()" id="layvitri">Lấy vị trí</button>
+      <p id="output"></p>
+    </div>
 
     <script>
       function layvitri() {
